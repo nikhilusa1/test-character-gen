@@ -22,7 +22,7 @@ async function generateImage(prompt) {
         sampler: 'K_DPM_2_ANCESTRAL',
         seed: 0,
         steps: 25,
-        style_preset: 'comic-book',
+        style_preset: 'none',
       }),
     }
   )
