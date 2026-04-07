@@ -1,6 +1,7 @@
 import { useCharacters } from './hooks/useCharacters'
 import TopBar from './components/TopBar'
 import NameBar from './components/NameBar'
+import CharacterSheet from './components/CharacterSheet'
 
 export default function App() {
   const { characters, current, createCharacter, updateCurrent, updateSheet, updateAppearance, setCurrentById } = useCharacters()
@@ -15,7 +16,10 @@ export default function App() {
       />
       <NameBar character={current} onUpdate={updateCurrent} />
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
-        <div style={{ color: 'var(--text-muted)', padding: 24 }}>Panels coming soon</div>
+        <CharacterSheet character={current} onUpdateSheet={updateSheet} />
+        <div style={{ width: 340, background: 'var(--bg-base)', color: 'var(--text-muted)', padding: 24 }}>
+          Visual editor coming soon
+        </div>
       </div>
     </div>
   )
