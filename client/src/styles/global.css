@@ -1,0 +1,77 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-base:     #0d0d1a;
+  --bg-panel:    #12121e;
+  --bg-elevated: #1a1a2e;
+  --bg-control:  #22223a;
+  --border:      #3a3a5c;
+  --accent:      #7c6af7;
+  --accent-dim:  #4a3f9f;
+  --text-primary: #e2e8f0;
+  --text-muted:  #8888aa;
+  --text-label:  #aaaacc;
+  --danger:      #ef4444;
+  --success:     #22c55e;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#root { height: 100vh; display: flex; flex-direction: column; }
+
+textarea, input, select {
+  background: var(--bg-control);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 13px;
+  padding: 8px 10px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+textarea:focus, input:focus, select:focus { border-color: var(--accent); }
+textarea { resize: vertical; }
+select option { background: var(--bg-control); }
+
+button {
+  background: var(--accent-dim);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 6px 14px;
+  transition: background 0.15s;
+}
+button:hover { background: var(--accent); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+button.secondary {
+  background: transparent;
+  border-color: var(--border);
+}
+button.secondary:hover { background: var(--bg-elevated); }
+
+button.danger { background: #7f1d1d; border-color: var(--danger); }
+button.danger:hover { background: var(--danger); }
+
+label {
+  color: var(--text-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.error-text { color: var(--danger); font-size: 12px; }
