@@ -54,13 +54,13 @@ Node/Express Backend (API proxy)
     "outfitStyle": "string",
     "extraNotes": "string"
   },
-  "imageUrl": "string | null",
+  "imageData": "base64 string | null",
   "createdAt": "ISO date",
   "updatedAt": "ISO date"
 }
 ```
 
-Characters are saved as a JSON array in `localStorage` under the key `character-studio-characters`.
+Characters are saved as a JSON array in `localStorage` under the key `character-studio-characters`. The image is stored as a base64 data URL so it persists locally without an external URL.
 
 ---
 
@@ -71,7 +71,7 @@ Characters are saved as a JSON array in `localStorage` under the key `character-
 - Name bar: editable character name + tag pills (medium, genre)
 
 ### Left Panel — Character Sheet
-Four collapsible sections, all free-text with autosave:
+Four sections, all free-text with autosave (always visible, not collapsible — keeps it simple):
 1. **Backstory** — textarea: origin, formative events
 2. **Personality & Psychology** — trait pills (add/remove) + textarea for fears, motivations, inner conflicts
 3. **Relationships** — textarea: key people, dynamics
@@ -104,10 +104,10 @@ Each section has an **"AI Assist" button** that calls the NVIDIA LLM endpoint wi
 - API key stored in `.env` on the backend, never exposed to the browser
 
 ### LLM (AI Assist)
-- Endpoint: NVIDIA NIM LLM (e.g., `meta/llama-3.1-70b-instruct` or similar available model)
+- Endpoint: NVIDIA NIM LLM — `meta/llama-3.1-70b-instruct` (default; verify availability against build.nvidia.com catalog at implementation time)
 - Each "AI Assist" call sends a system prompt + the character's current sheet as context
 - Returns 2–3 sentences of suggested content for the requested field
-- User can accept (appends to field) or dismiss
+- User can **replace** field content with the suggestion, or dismiss it — not append
 
 ---
 
